@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FoodTracker</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_timeline">Timeline</string>
+    <string name="tab_export">Export</string>
+    <string name="tab_settings">Settings</string>
+
+    <string name="meal_breakfast">Breakfast</string>
+    <string name="meal_lunch">Lunch</string>
+    <string name="meal_dinner">Dinner</string>
+    <string name="meal_snack">Snack</string>
+
+    <string name="next_up">NEXT UP</string>
+    <string name="log_meal">Log %1$s</string>
+    <string name="all_meals_logged">All meals logged</string>
+    <string name="all_meals_logged_sub">Nice work. See you tomorrow.</string>
+    <string name="log_symptom">Log symptom</string>
+    <string name="logged_today">Logged today (%1$d)</string>
+
+    <string name="settings_tracking_period">Tracking period</string>
+    <string name="settings_day_count">Day %1$d of %2$d · %3$d days left</string>
+    <string name="settings_meal_reminders">Meal reminders</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_app_settings">App Settings</string>
+
+    <string name="log_food_question">What did you eat and drink?</string>
+    <string name="log_food_placeholder">e.g. Pretzel, coffee with milk, rice with beans</string>
+    <string name="log_save">Save entry</string>
+    <string name="log_tap_photo">Tap to add a photo</string>
+    <string name="log_take_photo">Take photo</string>
+    <string name="log_choose_gallery">Choose from gallery</string>
+
+    <string name="symptom_title">Symptom check-in</string>
+    <string name="symptom_severity">Diarrhea severity</string>
+    <string name="symptom_scale">1 = mild, 5 = severe</string>
+    <string name="symptom_mild">Mild</string>
+    <string name="symptom_severe">Severe</string>
+    <string name="symptom_note_label">Anything to add? (optional)</string>
+    <string name="symptom_note_placeholder">e.g. About an hour after eating</string>
+    <string name="symptom_save">Save check-in</string>
+
+    <string name="entry_drink_label">Drink: </string>
+
+    <string name="day_today">Today</string>
+    <string name="day_yesterday">Yesterday</string>
+
+    <string name="pdf_title">Food &amp; Gut Log</string>
+    <string name="pdf_food_prefix">Food: </string>
+    <string name="pdf_drink_prefix">Drink: </string>
+
+    <string name="export_title">Export report</string>
+    <string name="export_desc">A detailed log — meals, photos, symptoms and the exact time each was recorded — ready for your nutrition expert.</string>
+    <string name="export_preview_label">REPORT PREVIEW</string>
+    <string name="export_include_photos">Include photos</string>
+    <string name="export_include_photos_sub">Adds meal photos to the PDF</string>
+    <string name="export_btn_email">Export</string>
+    <string name="export_preparing">Preparing PDF…</string>
+    <string name="export_sent_title">Export successful</string>
+    <string name="export_sent_sub">A PDF of this report was shared as an attachment.</string>
+    <string name="export_done">Done</string>
+
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_ok">OK</string>
+    <string name="settings_test_notif">Send a test notification</string>
+    <string name="settings_exact_notif">Enable exact-time reminders</string>
+    <string name="settings_followup">Follow-up reminder</string>
+    <string name="settings_followup_sub">Nudge again if a meal isn\'t logged after 45 min</string>
+    <string name="settings_snackask">Ask about snacks</string>
+    <string name="settings_snackask_sub">One check-in mid-afternoon</string>
+    <string name="settings_dinner_window">Dinner window</string>
+
+    <string name="notif_followup_msg">Still haven\'t logged %1$s? Tap to add it now.</string>
+
+    <string name="log_date_label">Date</string>
+    <string name="log_time_label">Time</string>
+    <string name="log_ai_hint">Our AI assistant will suggest ingredients and allergens based on your photos. Please review and correct them if needed.</string>
+</resources>

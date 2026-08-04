@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FoodTracker</string>
+    <string name="tab_home">Heute</string>
+    <string name="tab_timeline">Zeitachse</string>
+    <string name="tab_export">Exportieren</string>
+    <string name="tab_settings">Einstellungen</string>
+
+    <string name="meal_breakfast">Frühstück</string>
+    <string name="meal_lunch">Mittagessen</string>
+    <string name="meal_dinner">Abendessen</string>
+    <string name="meal_snack">Snack</string>
+
+    <string name="next_up">ALS NÄCHSTES</string>
+    <string name="log_meal">Logge %1$s</string>
+    <string name="all_meals_logged">Alles geloggt</string>
+    <string name="all_meals_logged_sub">Gute Arbeit. Bis morgen.</string>
+    <string name="log_symptom">Symptom loggen</string>
+    <string name="logged_today">Heute geloggt (%1$d)</string>
+
+    <string name="settings_tracking_period">Tracking-Zeitraum</string>
+    <string name="settings_day_count">Tag %1$d von %2$d · noch %3$d Tage</string>
+    <string name="settings_meal_reminders">Mahlzeit-Erinnerungen</string>
+    <string name="settings_notifications">Benachrichtigungen</string>
+    <string name="settings_language">Sprache</string>
+    <string name="settings_app_settings">App-Einstellungen</string>
+
+    <string name="log_food_question">Was haben Sie gegessen und getrunken?</string>
+    <string name="log_food_placeholder">z.B. Brezel, Kaffee mit Milch, Reis mit Bohnen</string>
+    <string name="log_save">Eintrag speichern</string>
+    <string name="log_tap_photo">Tippen, um ein Foto hinzuzufügen</string>
+    <string name="log_take_photo">Foto aufnehmen</string>
+    <string name="log_choose_gallery">Aus Galerie wählen</string>
+
+    <string name="symptom_title">Symptom-Check-in</string>
+    <string name="symptom_severity">Diarrhoe-Schweregrad</string>
+    <string name="symptom_scale">1 = mild, 5 = schwerwiegend</string>
+    <string name="symptom_mild">Mild</string>
+    <string name="symptom_severe">Schwer</string>
+    <string name="symptom_note_label">Möchten Sie etwas hinzufügen? (optional)</string>
+    <string name="symptom_note_placeholder">z.B. Etwa eine Stunde nach dem Essen</string>
+    <string name="symptom_save">Check-in speichern</string>
+
+    <string name="entry_drink_label">Getränk: </string>
+
+    <string name="day_today">Heute</string>
+    <string name="day_yesterday">Gestern</string>
+
+    <string name="pdf_title">Essens- &amp; Darm-Protokoll</string>
+    <string name="pdf_food_prefix">Essen: </string>
+    <string name="pdf_drink_prefix">Trinken: </string>
+
+    <string name="export_title">Bericht exportieren</string>
+    <string name="export_desc">Ein detailliertes Protokoll — Mahlzeiten, Fotos, Symptome und die genaue Zeit, zu der alles aufgezeichnet wurde — bereit für Ihren Ernährungsexperten.</string>
+    <string name="export_preview_label">BERICHTSVORSCHAU</string>
+    <string name="export_include_photos">Fotos einschließen</string>
+    <string name="export_include_photos_sub">Fügt Essensfotos dem PDF hinzu</string>
+    <string name="export_btn_email">Exportieren</string>
+    <string name="export_preparing">PDF wird vorbereitet…</string>
+    <string name="export_sent_title">Export erfolgreich</string>
+    <string name="export_sent_sub">Ein PDF dieses Berichts wurde als Anhang geteilt.</string>
+    <string name="export_done">Fertig</string>
+
+    <string name="btn_cancel">Abbrechen</string>
+    <string name="btn_ok">OK</string>
+    <string name="settings_test_notif">Test-Benachrichtigung senden</string>
+    <string name="settings_exact_notif">Pünktliche Erinnerungen aktivieren</string>
+    <string name="settings_followup">Nachfass-Erinnerung</string>
+    <string name="settings_followup_sub">Erneut erinnern, wenn nach 45 Min. nichts geloggt wurde</string>
+    <string name="settings_snackask">Nach Snacks fragen</string>
+    <string name="settings_snackask_sub">Ein Check-in am Nachmittag</string>
+    <string name="settings_dinner_window">Abendessen-Fenster</string>
+
+    <string name="notif_followup_msg">Noch kein %1$s geloggt? Tippen, um es jetzt hinzuzufügen.</string>
+
+    <string name="log_date_label">Datum</string>
+    <string name="log_time_label">Zeit</string>
+    <string name="log_ai_hint">Unser KI-Assistent schlägt Zutaten und Allergene basierend auf Ihren Fotos vor. Bitte überprüfen und korrigieren Sie diese bei Bedarf.</string>
+</resources>
