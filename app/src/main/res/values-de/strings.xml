@@ -10,6 +10,7 @@
     <string name="meal_lunch">Mittagessen</string>
     <string name="meal_dinner">Abendessen</string>
     <string name="meal_snack">Snack</string>
+    <string name="meal_drink">Trinken</string>
 
     <string name="next_up">ALS NÄCHSTES</string>
     <string name="log_meal">Logge %1$s</string>

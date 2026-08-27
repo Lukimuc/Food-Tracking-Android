@@ -36,6 +36,7 @@ import com.guttrack.app.data.model.SymptomEntry
 import com.guttrack.app.ui.components.EntryRowFor
 import com.guttrack.app.ui.components.GtSwitch
 import com.guttrack.app.ui.components.buildDisplayList
+import com.guttrack.app.ui.theme.GtChipBg
 import com.guttrack.app.ui.theme.GtOnSurfaceFaint
 import com.guttrack.app.ui.theme.GtPrimary
 import com.guttrack.app.ui.theme.GtPrimaryDark
@@ -65,7 +66,7 @@ fun ExportScreen(viewModel: GutTrackViewModel) {
             Text(
                 stringResource(R.string.export_desc),
                 fontSize = 12.5.sp, color = GtOnSurfaceFaint, lineHeight = 18.sp,
-                modifier = Modifier.padding(bottom = 18.dp),
+                modifier = Modifier.padding(bottom = 12.dp),
             )
         }
 
@@ -87,7 +88,7 @@ fun ExportScreen(viewModel: GutTrackViewModel) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 20.dp)
-                        .background(com.guttrack.app.ui.theme.GtChipBg, RoundedCornerShape(999.dp))
+                        .background(GtChipBg, RoundedCornerShape(999.dp))
                         .padding(15.dp),
                     horizontalArrangement = Arrangement.Center,
                 ) {

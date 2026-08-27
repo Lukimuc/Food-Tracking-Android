@@ -138,12 +138,13 @@ fun HomeScreen(viewModel: GutTrackViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 MealChip(MealType.BREAKFAST, MealType.BREAKFAST.name in loggedTypes, viewModel, Modifier.weight(1f))
                 MealChip(MealType.LUNCH, MealType.LUNCH.name in loggedTypes, viewModel, Modifier.weight(1f))
                 MealChip(MealType.DINNER, MealType.DINNER.name in loggedTypes, viewModel, Modifier.weight(1f))
                 MealChip(MealType.SNACK, false, viewModel, Modifier.weight(1f))
+                MealChip(MealType.DRINK, false, viewModel, Modifier.weight(1f))
             }
         }
 
@@ -200,20 +201,20 @@ private fun MealChip(type: MealType, logged: Boolean, viewModel: GutTrackViewMod
         modifier = modifier
             .clickable { viewModel.openLogMeal(type) }
             .background(if (logged) GtChipBg else MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
-            .padding(vertical = 11.dp, horizontal = 4.dp),
+            .padding(vertical = 11.dp, horizontal = 2.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
             stringResource(type.labelRes),
-            fontSize = 10.5.sp,
+            fontSize = 9.5.sp,
             maxLines = 1,
             color = GtOnSurfaceFaint,
             modifier = Modifier.padding(bottom = 5.dp)
         )
         if (logged) {
-            Icon(Icons.Filled.CheckCircle, contentDescription = null, tint = GtPrimaryDark, modifier = Modifier.size(18.dp))
+            Icon(Icons.Filled.CheckCircle, contentDescription = null, tint = GtPrimaryDark, modifier = Modifier.size(16.dp))
         } else {
-            Text(if (type == MealType.SNACK) "+ Add" else "Log", fontSize = 11.sp, fontWeight = FontWeight.SemiBold, color = GtPrimaryDark)
+            Text(if (type == MealType.SNACK || type == MealType.DRINK) "+ Add" else "Log", fontSize = 10.sp, fontWeight = FontWeight.SemiBold, color = GtPrimaryDark)
         }
     }
 }

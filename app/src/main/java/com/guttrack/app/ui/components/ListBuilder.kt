@@ -12,6 +12,7 @@ fun buildDisplayList(meals: List<MealEntry>, symptoms: List<SymptomEntry>): List
     byType[MealType.LUNCH.name]?.firstOrNull()?.let { items.add(it) }
     items.addAll(symptoms)
     items.addAll(byType[MealType.SNACK.name].orEmpty())
+    items.addAll(byType[MealType.DRINK.name].orEmpty())
     byType[MealType.DINNER.name]?.firstOrNull()?.let { items.add(it) }
     return items
 }

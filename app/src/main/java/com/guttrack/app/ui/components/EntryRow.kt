@@ -84,7 +84,7 @@ fun EntryRow(
         headlineContent = {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(label, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                Text(time, fontSize = 11.sp, color = GtOnSurfaceFaint)
+                Text(formatTime24to12(time), fontSize = 11.sp, color = GtOnSurfaceFaint)
             }
         },
         supportingContent = {

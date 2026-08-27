@@ -3926,6 +3926,7 @@ string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
 string meal_breakfast
 string meal_dinner
+string meal_drink
 string meal_lunch
 string meal_snack
 string mtrl_badge_numberless_content_description

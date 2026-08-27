@@ -33,6 +33,7 @@
     <string name="logged_today">Logged today (%1$d)</string>
     <string name="meal_breakfast">Breakfast</string>
     <string name="meal_dinner">Dinner</string>
+    <string name="meal_drink">Drink</string>
     <string name="meal_lunch">Lunch</string>
     <string name="meal_snack">Snack</string>
     <string name="next_up">NEXT UP</string>

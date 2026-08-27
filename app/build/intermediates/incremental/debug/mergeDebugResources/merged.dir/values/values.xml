@@ -2103,6 +2103,7 @@
     <string name="material_timepicker_text_input_mode_description">Switch to text input mode for the time input.</string>
     <string name="meal_breakfast">Breakfast</string>
     <string name="meal_dinner">Dinner</string>
+    <string name="meal_drink">Drink</string>
     <string name="meal_lunch">Lunch</string>
     <string name="meal_snack">Snack</string>
     <string description="Content description for new notification (no number count) [CHAR_LIMIT=NONE]" name="mtrl_badge_numberless_content_description">New notification</string>

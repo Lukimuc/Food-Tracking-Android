@@ -32,6 +32,7 @@
     <string name="logged_today">Heute geloggt (%1$d)</string>
     <string name="meal_breakfast">Frühstück</string>
     <string name="meal_dinner">Abendessen</string>
+    <string name="meal_drink">Trinken</string>
     <string name="meal_lunch">Mittagessen</string>
     <string name="meal_snack">Snack</string>
     <string name="next_up">ALS NÄCHSTES</string>

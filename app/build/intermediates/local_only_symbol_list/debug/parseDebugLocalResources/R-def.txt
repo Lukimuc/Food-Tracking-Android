@@ -37,6 +37,7 @@ string log_time_label
 string logged_today
 string meal_breakfast
 string meal_dinner
+string meal_drink
 string meal_lunch
 string meal_snack
 string next_up

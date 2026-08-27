@@ -67,28 +67,25 @@ object PdfExporter {
                 y += 18f
 
                 for (item in group.items) {
-                    val photoSize = if (includePhotos && item.photoUri != null) 60f else 0f
-                    val drinkPhotoSize = if (includePhotos && item.drinkPhotoUri != null) 60f else 0f
-                    val maxPhotoHeight = maxOf(photoSize, drinkPhotoSize)
+                    val photoW = if (includePhotos && item.photoUri != null) 160f else 0f
+                    val photoH = if (includePhotos && item.photoUri != null) 120f else 0f
+                    val drinkPhotoW = if (includePhotos && item.drinkPhotoUri != null) 160f else 0f
+                    val drinkPhotoH = if (includePhotos && item.drinkPhotoUri != null) 120f else 0f
                     
-                    newPageIfNeeded(60f + maxPhotoHeight)
+                    val maxPhotoHeight = maxOf(photoH, drinkPhotoH)
+                    
+                    newPageIfNeeded(80f + maxPhotoHeight)
                     val startY = y
                     var textX = 40f
 
-                    if (photoSize > 0f) {
-                        val bmp = decodeBitmap(context, item.photoUri)
-                        if (bmp != null) {
-                            canvas.drawBitmap(bmp, null, RectF(textX, y, textX + photoSize, y + photoSize), null)
-                        }
-                        textX += photoSize + 8f
+                    if (photoW > 0f) {
+                        drawPhoto(context, canvas, item.photoUri!!, RectF(textX, y, textX + photoW, y + photoH))
+                        textX += photoW + 8f
                     }
                     
-                    if (drinkPhotoSize > 0f) {
-                        val bmp = decodeBitmap(context, item.drinkPhotoUri)
-                        if (bmp != null) {
-                            canvas.drawBitmap(bmp, null, RectF(textX, y, textX + drinkPhotoSize, y + drinkPhotoSize), null)
-                        }
-                        textX += drinkPhotoSize + 8f
+                    if (drinkPhotoW > 0f) {
+                        drawPhoto(context, canvas, item.drinkPhotoUri!!, RectF(textX, y, textX + drinkPhotoW, y + drinkPhotoH))
+                        textX += drinkPhotoW + 8f
                     }
 
                     if (textX > 40f) textX += 4f // spacing before text
@@ -148,6 +145,27 @@ object PdfExporter {
 
     fun uriFor(context: Context, file: File): Uri =
         FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+
+    private fun drawPhoto(context: Context, canvas: android.graphics.Canvas, uri: String, rect: RectF) {
+        val bmp = decodeBitmap(context, uri) ?: return
+        val bmpW = bmp.width.toFloat()
+        val bmpH = bmp.height.toFloat()
+        val bmpRatio = bmpW / bmpH
+        val rectRatio = rect.width() / rect.height()
+
+        val srcRect = if (bmpRatio > rectRatio) {
+            // Bitmap is wider than target rect
+            val newW = bmpH * rectRatio
+            val left = (bmpW - newW) / 2
+            android.graphics.Rect(left.toInt(), 0, (left + newW).toInt(), bmpH.toInt())
+        } else {
+            // Bitmap is taller than target rect
+            val newH = bmpW / rectRatio
+            val top = (bmpH - newH) / 2
+            android.graphics.Rect(0, top.toInt(), bmpW.toInt(), (top + newH).toInt())
+        }
+        canvas.drawBitmap(bmp, srcRect, rect, null)
+    }
 
     private fun decodeBitmap(context: Context, uriString: String?): Bitmap? {
         if (uriString == null) return null

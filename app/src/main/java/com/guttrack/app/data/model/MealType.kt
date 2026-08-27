@@ -8,7 +8,8 @@ enum class MealType(val labelRes: Int) {
     BREAKFAST(com.guttrack.app.R.string.meal_breakfast),
     LUNCH(com.guttrack.app.R.string.meal_lunch),
     DINNER(com.guttrack.app.R.string.meal_dinner),
-    SNACK(com.guttrack.app.R.string.meal_snack);
+    SNACK(com.guttrack.app.R.string.meal_snack),
+    DRINK(com.guttrack.app.R.string.meal_drink);
 
     fun getLabel(context: Context): String = context.getString(labelRes)
 

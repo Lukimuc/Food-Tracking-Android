@@ -67,10 +67,10 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
         .flatMapLatest { repo.observeSymptomsForDate(it) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    val exportMeals: StateFlow<List<MealEntry>> = repo.observeMealsSince(LocalDate.now().minusDays(6))
+    val exportMeals: StateFlow<List<MealEntry>> = repo.observeMealsSince(LocalDate.now().minusDays(40))
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    val exportSymptoms: StateFlow<List<SymptomEntry>> = repo.observeSymptomsSince(LocalDate.now().minusDays(6))
+    val exportSymptoms: StateFlow<List<SymptomEntry>> = repo.observeSymptomsSince(LocalDate.now().minusDays(40))
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     init {
@@ -99,14 +99,6 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
     fun sendTestNotification(context: Context) {
         _uiState.update { it.copy(showNotifBanner = true, notifText = "This is a test notification from GutTrack") }
         NotificationHelper.show(context, NotificationHelper.CHANNEL_CHECKINS, 9999, "FoodTracker", "This is a test notification")
-    }
-
-    fun nowLabel(): String {
-        val now = java.time.LocalTime.now()
-        var h12 = now.hour % 12
-        if (h12 == 0) h12 = 12
-        val ampm = if (now.hour >= 12) "PM" else "AM"
-        return "$h12:${now.minute.toString().padStart(2, '0')} $ampm"
     }
 
     // ---------- Log meal modal ----------
@@ -281,7 +273,9 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
     fun saveSymptom() {
         val state = _uiState.value
         viewModelScope.launch {
-            repo.saveSymptom(state.editingSymptom, _todayDate.value, nowLabel(), state.severity, state.symptomNote)
+            val now = java.time.LocalTime.now()
+            val timeStr = "${now.hour.toString().padStart(2, '0')}:${now.minute.toString().padStart(2, '0')}"
+            repo.saveSymptom(state.editingSymptom, _todayDate.value, timeStr, state.severity, state.symptomNote)
             closeModal()
         }
     }
@@ -358,6 +352,7 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
                 LocalDate.now().minusDays(1) -> context.getString(com.guttrack.app.R.string.day_yesterday)
                 else -> date.format(dayLabel)
             }
+            
             val dayMeals = meals.filter { it.dateEpoch == epoch }.map {
                 val tags = it.intoleranceTags.split(",").filter { t -> t.isNotBlank() }
                 val uris = it.photoUris.split(",").filter { u -> u.isNotBlank() }
@@ -366,7 +361,11 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
             val daySymptoms = symptoms.filter { it.dateEpoch == epoch }.map {
                 ExportItem(context.getString(com.guttrack.app.R.string.log_symptom), it.time, it.note, "", emptyList(), null, null, it.severity)
             }
-            ExportDayGroup(label, dayMeals + daySymptoms)
+            
+            // Strictly chronological sort by time string (24h format "HH:mm")
+            val sortedItems = (dayMeals + daySymptoms).sortedBy { it.time }
+            
+            ExportDayGroup(label, sortedItems)
         }
     }
 }
