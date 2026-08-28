@@ -39,6 +39,10 @@ class GutTrackRepository private constructor(context: Context) {
         mealDao.insert(MealEntry(dateEpoch = date.toEpochDay(), type = MealType.SNACK.name, time = time, note = note, photoUris = photoUris, intoleranceTags = intoleranceTags))
     }
 
+    suspend fun addDrink(date: LocalDate, time: String, note: String, photoUris: String, intoleranceTags: String = "") {
+        mealDao.insert(MealEntry(dateEpoch = date.toEpochDay(), type = MealType.DRINK.name, time = time, note = note, photoUris = photoUris, intoleranceTags = intoleranceTags))
+    }
+
     suspend fun updateMeal(entry: MealEntry, note: String, photoUris: String, intoleranceTags: String) {
         mealDao.update(entry.copy(note = note, photoUris = photoUris, intoleranceTags = intoleranceTags))
     }

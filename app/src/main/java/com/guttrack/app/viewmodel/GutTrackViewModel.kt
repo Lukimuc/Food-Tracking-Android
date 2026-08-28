@@ -107,7 +107,7 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             val now = java.time.LocalTime.now()
             val timeStr = "${now.hour.toString().padStart(2, '0')}:${now.minute.toString().padStart(2, '0')}"
-            if (type == MealType.SNACK) {
+            if (type == MealType.SNACK || type == MealType.DRINK) {
                 _uiState.update { it.copy(modal = Modal.LOG, logType = type, editingMeal = null, logDate = _todayDate.value, logTime = timeStr, noteText = "", intoleranceTags = emptyList(), pendingPhotoUris = emptyList()) }
             } else {
                 val existing = repo.getMainMeal(_todayDate.value, type)
@@ -132,7 +132,7 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             val now = java.time.LocalTime.now()
             val timeStr = "${now.hour.toString().padStart(2, '0')}:${now.minute.toString().padStart(2, '0')}"
-            if (type == MealType.SNACK) {
+            if (type == MealType.SNACK || type == MealType.DRINK) {
                 _uiState.update { it.copy(logType = type, editingMeal = null, noteText = "", intoleranceTags = emptyList(), pendingPhotoUris = emptyList()) }
             } else {
                 val existing = repo.getMainMeal(_todayDate.value, type)
@@ -234,12 +234,16 @@ class GutTrackViewModel(app: Application) : AndroidViewModel(app) {
             val urisStr = finalUris.joinToString(",")
             val tagsStr = state.intoleranceTags.joinToString(",")
 
-            if (state.logType == MealType.SNACK) {
+            if (state.logType == MealType.SNACK || state.logType == MealType.DRINK) {
                 val editing = state.editingMeal
                 if (editing != null) {
                     repo.updateMeal(editing.copy(intoleranceTags = tagsStr, dateEpoch = date.toEpochDay(), time = time), state.noteText, urisStr, tagsStr)
                 } else {
-                    repo.addSnack(date, time, state.noteText, urisStr, tagsStr)
+                    if (state.logType == MealType.SNACK) {
+                        repo.addSnack(date, time, state.noteText, urisStr, tagsStr)
+                    } else {
+                        repo.addDrink(date, time, state.noteText, urisStr, tagsStr)
+                    }
                 }
             } else {
                 repo.saveMainMeal(date, state.logType, time, state.noteText, urisStr, tagsStr)

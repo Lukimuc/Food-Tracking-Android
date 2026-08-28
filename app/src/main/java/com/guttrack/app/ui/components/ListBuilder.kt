@@ -4,16 +4,15 @@ import com.guttrack.app.data.model.MealEntry
 import com.guttrack.app.data.model.MealType
 import com.guttrack.app.data.model.SymptomEntry
 
-/** Orders a day's entries the way the GutTrack design lists them: breakfast, lunch, symptoms, snacks, dinner. */
+/** Orders a day's entries strictly chronologically by time. */
 fun buildDisplayList(meals: List<MealEntry>, symptoms: List<SymptomEntry>): List<Any> {
-    val byType = meals.groupBy { it.type }
-    val items = mutableListOf<Any>()
-    byType[MealType.BREAKFAST.name]?.firstOrNull()?.let { items.add(it) }
-    byType[MealType.LUNCH.name]?.firstOrNull()?.let { items.add(it) }
-    items.addAll(symptoms)
-    items.addAll(byType[MealType.SNACK.name].orEmpty())
-    items.addAll(byType[MealType.DRINK.name].orEmpty())
-    byType[MealType.DINNER.name]?.firstOrNull()?.let { items.add(it) }
+    val items = (meals + symptoms).sortedBy { item ->
+        when (item) {
+            is MealEntry -> item.time
+            is SymptomEntry -> item.time
+            else -> ""
+        }
+    }
     return items
 }
 
